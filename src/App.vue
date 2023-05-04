@@ -31,8 +31,8 @@ import axios             from 'axios'
           }
         })
         .then(result => {
-          store.resultApiCall = result.data
-          console.log('store.resultApiCall -->',store.resultApiCall);
+          store.resultApiCall = result.data.results
+          console.log('store.resultApiCall -->',result.data);
         })
       }
     },
