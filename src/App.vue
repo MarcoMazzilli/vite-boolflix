@@ -4,7 +4,7 @@ import Main              from './components/Main.vue'
 import Footer            from './components/Footer.vue'
 import SearchSection     from './components/MicroComponent/SearchSection.vue'
 import { store }         from './data/store'
-import axios from 'axios'
+import axios             from 'axios'
 
 
 
@@ -32,7 +32,6 @@ import axios from 'axios'
         })
         .then(result => {
           store.resultApiCall = result.data
-          console.log('result.data.results',result.data.results);
           console.log('store.resultApiCall -->',store.resultApiCall);
         })
       }
@@ -50,7 +49,7 @@ import axios from 'axios'
 
   <Header />
   
-  <SearchSection />
+  <SearchSection @startSearch="getApi" />
   
   <Main />
   
