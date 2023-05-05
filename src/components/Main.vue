@@ -10,13 +10,18 @@ import { store }      from '../data/store';
     },
     components:{
       ProductCard,
+    },
+    methods:{ //Utile per le stelle
+      floorNumber(vote){
+        return Math.floor(vote)
+      }
     }
   }
   </script>
 <template>
   <div class="container">
     
-    <h1>Film</h1>
+    <h1>Film </h1>
     <div class="card-wrapper">  
       <ProductCard 
       v-for="(film,id) in store.movieResultApiCall" 
@@ -25,7 +30,7 @@ import { store }      from '../data/store';
       :filmTitle="film.title"
       :originalFilmTitle="film.original_title"
       :lang="film.original_language"
-      :rate="film.vote_average"
+      :rate="Math.ceil(film.vote_average/2)"
       />
     </div>
     <h1>Tv-Series</h1>
@@ -37,7 +42,7 @@ import { store }      from '../data/store';
       :filmTitle="tvSerie.name"
       :originalFilmTitle="tvSerie.original_name"
       :lang="tvSerie.original_language"
-      :rate="tvSerie.vote_average"
+      :rate="Math.ceil(tvSerie.vote_average/2)"
       />
     </div>
     

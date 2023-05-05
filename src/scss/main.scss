@@ -1,3 +1,10 @@
 @use './partials/vars.scss' as *;
 @use './partials/general.scss' as *;
 @import '/node_modules/@fontsource/roboto/400.css';
+
+//Fontawesome
+@import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '@fortawesome/fontawesome-free/scss/brands.scss';
+@import '@fortawesome/fontawesome-free/scss/regular.scss';
+@import '@fortawesome/fontawesome-free/scss/solid.scss';
+@import '@fortawesome/fontawesome-free/scss/v4-shims.scss';

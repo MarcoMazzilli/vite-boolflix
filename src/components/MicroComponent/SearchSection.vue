@@ -7,7 +7,7 @@
       return{
         store,
       }
-    }
+    },
   }
   </script>
 

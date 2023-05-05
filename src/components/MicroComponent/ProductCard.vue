@@ -5,6 +5,10 @@
         name : "ProductCard"
       }
     },
+    methods:{
+
+
+    },
     props:{
       imageLink : String,
       filmTitle : String,
@@ -30,7 +34,7 @@
         <p class="language-container">
           <img :src="`/flags/${lang}.png`" :alt="lang">
         </p>
-        <p>{{ rate }}</p>
+        <span><i v-for="id in rate" :key="id" class="fa-solid fa-star"></i></span>
 
       </div>
 
@@ -66,6 +70,10 @@
     .language-container{
       width: 30px;
       margin: 10px 0;
+    }
+
+    i{
+      color: $rateStarsColor;
     }
    }
 }
