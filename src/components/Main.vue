@@ -33,7 +33,8 @@ import { store }      from '../data/store';
       :rate="Math.ceil(film.vote_average/2)"
       />
     </div>
-    <h1>Tv-Series</h1>
+    
+    <h1 v-if="store.tvSeriesResultApiCall != 0">Tv-Series</h1>
     <div class="card-wrapper">  
       <ProductCard 
       v-for="(tvSerie,id) in store.tvSeriesResultApiCall" 

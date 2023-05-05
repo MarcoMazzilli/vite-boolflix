@@ -22,6 +22,17 @@ import axios             from 'axios'
       }
     },
     methods:{
+      homeGetApi(){
+        axios.get(store.mostPopularApiUrl,{
+          params:{
+            api_key : store.api_key,
+          }
+        })
+        .then(result => {
+          store.movieResultApiCall = result.data.results
+          console.log('store.movieResultApiCall -->',result.data);
+        })
+      },
       getApi(){
         //Chiamata Film
         axios.get(store.apiUrl + "/movie",{
@@ -51,7 +62,7 @@ import axios             from 'axios'
       
     },
     mounted(){
-      this.getApi()
+      this.homeGetApi()
     }
   }
   </script>
