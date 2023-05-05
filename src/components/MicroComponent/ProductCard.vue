@@ -23,6 +23,7 @@
 
 
     <div class="mm-card">
+
       <div class="film-cover">
         <img :src="imageLink" alt=" Image Not Found">
       </div>
@@ -34,7 +35,7 @@
         <p class="language-container">
           <img :src="`/flags/${lang}.png`" :alt="lang">
         </p>
-        <span><i v-for="id in rate" :key="id" class="fa-solid fa-star"></i></span>
+        <div><i v-for="id in rate" :key="id" class="fa-solid fa-star"></i></div>
 
       </div>
 
@@ -46,23 +47,33 @@
 @use '../../scss/partials/vars.scss' as*;
 
 .mm-card{
-  width: 210px;
-  border: 1px solid black;
-  margin: 10px;
-  background-color: rgb(33, 114, 87);
-  height: 600px;
+  width: 200px;
   border-radius: 15px;
+  margin: 10px;
   overflow: hidden;
+  position: relative;
+  &:hover .film-description{
+    opacity: 1;
+    transition: all .3s;
+  }
   .film-cover{
-    min-height: 313px ;
     img{
       width: 100%;
       object-fit: cover;
+      display: block;
     }
   }
    .film-description{
     padding: 10px;
     background-color: rgb(164, 184, 164);
+    z-index: 5;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    height: 100%;
+
+    }
 
     img{
       width: 100%;
@@ -75,7 +86,7 @@
     i{
       color: $rateStarsColor;
     }
-   }
+   
 }
 
 </style>
