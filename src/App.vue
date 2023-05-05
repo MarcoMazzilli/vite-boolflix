@@ -61,9 +61,7 @@ import axios             from 'axios'
   
 <div class="appWrapper">
 
-  <Header />
-  
-  <SearchSection @startSearch="getApi" />
+  <Header @startSearch2="getApi"/>
   
   <Main />
   

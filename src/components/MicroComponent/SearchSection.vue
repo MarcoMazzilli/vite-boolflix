@@ -52,6 +52,9 @@
   cursor: pointer;
   background-color: white;
   border-radius: 15px;
+  &:hover{
+    background-color: $brandRed;
+  }
 }
 
 </style>
