@@ -23,7 +23,8 @@ import axios             from 'axios'
     },
     methods:{
       getApi(){
-        axios.get(store.apiUrl,{
+        //Chiamata Film
+        axios.get(store.apiUrl + "/movie",{
           params:{
             api_key : store.api_key,
             language : store.language,
@@ -31,10 +32,23 @@ import axios             from 'axios'
           }
         })
         .then(result => {
-          store.resultApiCall = result.data.results
-          console.log('store.resultApiCall -->',result.data);
+          store.movieResultApiCall = result.data.results
+          console.log('store.movieResultApiCall -->',result.data);
+        })
+        //Chiamata tvSeries
+        axios.get(store.apiUrl + "/tv",{
+          params:{
+            api_key : store.api_key,
+            language : store.language,
+            query : store.titleToSearch
+          }
+        })
+        .then(result => {
+          store.tvSeriesResultApiCall = result.data.results
+          console.log('store.tvSeriesResultApiCall -->',store.tvSeriesResultApiCall);
         })
       }
+      
     },
     mounted(){
       this.getApi()
