@@ -32,6 +32,7 @@ import axios             from 'axios'
         .then(result => {
           store.movieResultApiCall = result.data.results;
           store.titleToSearch = "";
+          store.tvSeriesResultApiCall = []
         })
       },
       getApi(){
@@ -56,12 +57,10 @@ import axios             from 'axios'
             if(store.seriesType === 'movies'){
               store.movieResultApiCall = result.data.results
               store.tvSeriesResultApiCall = []
-              store.titleToSearch = "";
 
             }else if(store.seriesType === 'tvSeries'){
               store.tvSeriesResultApiCall = result.data.results
               store.movieResultApiCall = []
-              store.titleToSearch = "";
 
             }else{
               store.movieResultApiCall = result.data.results

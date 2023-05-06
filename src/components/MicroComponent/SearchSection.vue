@@ -9,6 +9,13 @@
         inputFlag : false,
       }
     },
+    methods:{
+      ifDataComplete(){
+        if(store.titleToSearch.length != 0){
+          this.$emit('startSearch')
+        }
+      }
+    }
   }
   </script>
 
@@ -17,6 +24,7 @@
 
   <div class="select-section">
     <select 
+    @change="ifDataComplete()"
     :class="this.inputFlag ? 'clicked' : null"
     v-model="store.seriesType"
     name="" 
@@ -32,9 +40,9 @@
       type="text" 
       placeholder="Cerca un Film o una Serie tv"
       v-model="store.titleToSearch"
-      @keydown.enter="$emit('startSearch')">
+      @keydown.enter="ifDataComplete()">
       <span class="button-search" :class="this.inputFlag ? 'clicked' : null">
-        <i @click.stop="$emit('startSearch')" v-if="inputFlag" class="fa-solid fa-magnifying-glass"></i>
+        <i @click.stop="ifDataComplete()" v-if="inputFlag" class="fa-solid fa-magnifying-glass"></i>
       </span>
       
       <span class="open-search" @click.stop="this.inputFlag = !this.inputFlag">
