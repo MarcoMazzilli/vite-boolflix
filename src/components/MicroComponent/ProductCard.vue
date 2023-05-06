@@ -29,14 +29,34 @@
       </div>
 
       <div class="film-description">
+        <div class="wrapper">
 
-        <h3>{{ filmTitle }}</h3>
-        <h4>{{ originalFilmTitle }}</h4>
-        <p class="language-container">
-          <img :src="`/flags/${lang}.png`" :alt="lang">
-        </p>
-        <div><i v-for="id in rate" :key="id" class="fa-solid fa-star"></i></div>
+          <div class="col title">
+            <h4>Titolo</h4>
+            <p>{{ filmTitle }}</p>
+          </div>
+          
+          
+          <div class="col og-title">
+            <h4>Titolo originale</h4>
+            <p>{{ originalFilmTitle }}</p>
+          </div>
+            
+          
+          <div class="col rating-container">
 
+            <div class="star-container">
+              <span> Rate:</span>
+              <i v-for="id in rate" :key="id" class="fa-solid fa-star"></i>
+            </div>
+            
+            <div class="language-container">
+              <img :src="`/flags/${lang}.png`" :alt="lang">
+            </div>
+
+          </div>
+            
+          </div>
       </div>
 
     </div>
@@ -52,9 +72,24 @@
   margin: 10px;
   overflow: hidden;
   position: relative;
+  border: 2px solid rgba(0, 0, 0, 0);
+  &:hover{
+    border: 2px solid white;
+  }
   &:hover .film-description{
     opacity: 1;
-    transition: all .3s;
+    transition: all .4s;
+    left: 0;
+  }
+  &:hover .film-cover{
+    transform: scale(1.3);
+    transition: 3s;
+  }
+  h4{
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-align: center;
+    color: gray;
   }
   .film-cover{
     img{
@@ -64,30 +99,53 @@
     }
   }
    .film-description{
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.85);
+    padding: 2px; //Change
+    background-color: rgba(0, 0, 0, 0.9);
     color: white;
     position: absolute;
     opacity: 0;
     top: 0;
-    left: 0;
+    left: 100%;
     height: 100%;
     width: 100%;
+    transition: all .4s;
 
-    }
+    .wrapper{
+        height: 100%;
+        img{
+          width: 100%;
+        }
+          .col{
+            height: calc(100% / 3);
+            padding: 5px;
+          }
 
-    img{
-      width: 100%;
-    }
-    .language-container{
-      width: 30px;
-      margin: 10px 0;
-    }
+        .title , .og-title {
+          p{
+            margin: 10px 0;
+            text-align: center;
+            font-style: italic;
+          }
+        }
 
-    i{
-      color: $rateStarsColor;
+        .rating-container{
+          padding: 10px 5px;
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          .language-container{
+            width: 30px;
+          }
+          .star-container{
+            span{
+              margin-right: 5px;
+            }
+            i{
+              color: $rateStarsColor;
+             }
+          }        
+        }
+      }
     }
-   
-}
-
+  }
 </style>

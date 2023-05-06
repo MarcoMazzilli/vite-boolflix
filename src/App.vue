@@ -68,7 +68,7 @@ import axios             from 'axios'
               store.titleToSearch = "";
             }
 
-            console.log(' --->>', fullUrl)
+            console.log('fullUrl --->>', fullUrl)
           })
       }
       
@@ -90,7 +90,7 @@ import axios             from 'axios'
   
   <Main />
   
-  <Footer />
+  <!-- <Footer /> -->
   
 </div>
 
