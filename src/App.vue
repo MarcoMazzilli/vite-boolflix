@@ -55,6 +55,7 @@ import axios             from 'axios'
             }
           })
           .then(result => {
+
             if(store.seriesType === 'movies'){
               store.movieResultApiCall = result.data.results
               store.tvSeriesResultApiCall = []
@@ -73,13 +74,9 @@ import axios             from 'axios'
                 if (element.media_type === 'movie') {
                   store.movieResultApiCall.push(element)
                  }
-                 
                })
             }
-
-            console.log('result --->>', result.data.results)
-            console.log('store.movieResultApiCall -->',store.movieResultApiCall)
-            console.log('store.tvSeriesResultApiCall -->',store.tvSeriesResultApiCall)
+            
           })
       }
       
