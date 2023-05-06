@@ -15,7 +15,18 @@
 <template>
  <div class="container">
 
-      <input id="searchBarInput" 
+  <div class="select-section">
+    <select 
+    :class="this.inputFlag ? 'clicked' : null"
+    v-model="store.seriesType"
+    name="" 
+    id="">
+      <option value="movies">Movies</option>
+      <option value="tvSeries">TV Series</option>
+    </select>
+  </div>
+
+      <input class="searchBarInput" 
       :class="this.inputFlag ? 'clicked' : null"
       type="text" 
       placeholder="Cerca un Film o una Serie tv"
@@ -36,44 +47,53 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-}
+  height: 100%;
+  }
 
-#searchBarInput{
+.select-section select{
+  height: 30px;
   width: 0px;
-  opacity: 0;
-  height: 50px;
-  border-radius: 15px;
-  padding: 5px;
-  margin: 10px;
+  border-radius: 5px;
   border: none;
+  text-align: center;
+  background-color: white;
+  letter-spacing: 1px;
   transition: all .3s;
-  &:hover{
-    width: 250px;
-    transition: 1s;
+  &.clicked{
+    width: 80px;
+    padding: 5px 0;
+    border-radius: 5px;
+    border: none;
+    transition: all 1s;
   }
 }
 
-#searchBarInput.clicked{
-  width: 250px;
-  opacity: 1;
-  padding: 15px;
-  border-radius: 15px;
-  margin: 10px;
+.searchBarInput{
+  width: 0px;
+  height: 30px;
+  border-radius: 5px;
   border: none;
-  height: 50px;
-  transition: all 1s;
+  transition: all .3s;
+&.clicked{
+    width: 250px;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 0 10px;
+    border: none;
+    transition: all 1s;
+  }
 }
 
 .buttonSearch{
-  height: 50px;
+  height: 30px;
   aspect-ratio: 1/1;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border-radius: 15px;
+  border-radius: 5px;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   &:hover{
     color: $brandRed;
     background-color: white;

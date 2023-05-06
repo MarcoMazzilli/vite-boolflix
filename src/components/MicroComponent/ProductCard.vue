@@ -65,13 +65,14 @@
   }
    .film-description{
     padding: 10px;
-    background-color: rgb(164, 184, 164);
-    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
     position: absolute;
     opacity: 0;
     top: 0;
     left: 0;
     height: 100%;
+    width: 100%;
 
     }
 

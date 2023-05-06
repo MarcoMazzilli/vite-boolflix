@@ -21,7 +21,7 @@ import { store }      from '../data/store';
 <template>
   <div class="container">
     
-    <h1>Film </h1>
+    <h1 v-if="store.movieResultApiCall != 0">Film </h1>
     <div class="card-wrapper">  
       <ProductCard 
       v-for="(film,id) in store.movieResultApiCall" 
@@ -33,7 +33,7 @@ import { store }      from '../data/store';
       :rate="Math.ceil(film.vote_average/2)"
       />
     </div>
-    
+
     <h1 v-if="store.tvSeriesResultApiCall != 0">Tv-Series</h1>
     <div class="card-wrapper">  
       <ProductCard 
@@ -66,6 +66,7 @@ import { store }      from '../data/store';
     color: white;
     width: 100%;
     height: 50px;
+    padding: 10px;
   }
 }
 

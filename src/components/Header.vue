@@ -23,7 +23,9 @@ import menuList from '../data/headerMenudb'
   <header>
       
       <div class="col left-side">
-        <img src="/logo-boolflix.png" alt="Logo Boolflix">
+
+        <img @click="$emit('goToHomepage')" src="/logo-boolflix.png" alt="Logo Boolflix">
+
         <div class="menu">
           <ul>
             <li v-for="(link,id) in menuList" :key="id">
@@ -35,7 +37,15 @@ import menuList from '../data/headerMenudb'
       </div>
       
       <div class="col right-side">
-        <SearchSection @startSearch="startSearch2" />
+
+        <div class="search-section">
+          <SearchSection @startSearch="startSearch2" />
+        </div>
+
+        <div class="user-options">
+          <img src="/user-icons/user-icon.png" alt="">
+        </div>
+
       </div>
       
   </header>
@@ -57,6 +67,7 @@ header{
     img{
     height: 100%;
     padding: 15px 5px;
+    cursor: pointer;
     }
     .menu{
       display: flex;
@@ -84,8 +95,20 @@ header{
   }
     
     .col.right-side{
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
       padding: 0 50px;
       width: 50%;
+      .user-options{
+        margin-left: 20px;
+      }
+      img{
+        height: 35px;
+        display: block;
+        border-radius: 5px;
+        cursor: pointer;
+      }
     }
   }
 </style>
