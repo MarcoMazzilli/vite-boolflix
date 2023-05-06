@@ -29,6 +29,7 @@
     v-model="store.seriesType"
     name="" 
     id="">
+      <option value="all">All</option>
       <option value="movies">Movies</option>
       <option value="tvSeries">TV Series</option>
     </select>

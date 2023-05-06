@@ -36,6 +36,7 @@ import axios             from 'axios'
         })
       },
       getApi(){
+
           let fullUrl = store.baseUrl
 
           if(store.seriesType === 'tvSeries'){
@@ -43,7 +44,7 @@ import axios             from 'axios'
           } else if (store.seriesType === 'movies'){
             fullUrl += '/search/movie'
           }else if(store.seriesType === 'all'){
-            fullUrl += '/movie/popular'
+            fullUrl += '/search/multi'
           }
 
           axios.get(fullUrl ,{
@@ -63,11 +64,22 @@ import axios             from 'axios'
               store.movieResultApiCall = []
 
             }else{
-              store.movieResultApiCall = result.data.results
-              store.titleToSearch = "";
+              store.movieResultApiCall = []
+              result.data.results.forEach(element => {
+
+                if (element.media_type === 'tv') {
+                  store.tvSeriesResultApiCall.push(element)
+                }
+                if (element.media_type === 'movie') {
+                  store.movieResultApiCall.push(element)
+                 }
+                 
+               })
             }
 
-            console.log('fullUrl --->>', fullUrl)
+            console.log('result --->>', result.data.results)
+            console.log('store.movieResultApiCall -->',store.movieResultApiCall)
+            console.log('store.tvSeriesResultApiCall -->',store.tvSeriesResultApiCall)
           })
       }
       
