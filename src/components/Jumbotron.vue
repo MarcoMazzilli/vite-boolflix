@@ -58,7 +58,7 @@ export default {
 @use '../scss/partials/vars.scss' as *;
 
 .jumbotron{
-    height: 650px;
+    height: 600px;
 
     .wrapper{
         height: 100%;
@@ -79,7 +79,7 @@ export default {
             
             .description-box{
                 width: 70%;
-                height: 60%;
+                height: 50%;
                 margin-left: 100px;
                 padding: 20px;
                 color: white;
