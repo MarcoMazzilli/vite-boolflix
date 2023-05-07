@@ -16,7 +16,29 @@ export default {
         <div class="wrapper">
 
             <div class="description-container">
+                <div class="description-box"
+                v-show="store.counterJumbotronImg === id"
+                v-for="(film , id) in store.movieResultApiCall" 
+                :key="id">
 
+                <h2>{{ film.title }}</h2>
+
+                <div class="rating-stars">
+                    <span>
+                        <i class="fa-solid fa-star"
+                        v-for="star in Math.ceil(film.vote_average/2)"
+                        :key="star" ></i>
+                    </span>
+                    <span>
+                        <i class="fa-regular fa-star"
+                        v-for="star in Math.ceil(4 - film.vote_average/2)"
+                        :key="star" ></i>
+                    </span>
+                </div>
+
+                <p>{{ film.overview }}</p>
+
+                </div>
             </div>
 
             <div class="img-container">
@@ -33,15 +55,13 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@use '../scss/partials/vars.scss';
+@use '../scss/partials/vars.scss' as *;
 
 .jumbotron{
     height: 650px;
-    // background-color: rgb(150, 187, 187);
 
     .wrapper{
         height: 100%;
-        text-align: end;
         display: flex;
         justify-content: flex-end;
         position: relative;
@@ -52,8 +72,36 @@ export default {
             width: 50%;
             position: absolute;
             left: 0;
+            display: flex;
+            align-items: center;
             background: rgb(0,0,0);
-            background: linear-gradient(90deg, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);  
+            background: linear-gradient(90deg, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+            
+            .description-box{
+                width: 70%;
+                height: 60%;
+                margin-left: 100px;
+                padding: 20px;
+                color: white;
+
+                h2{
+                    margin: 10px 0;
+                    font-size: 2.5rem;
+                }
+                .rating-stars{
+                    span{
+                        display: inline-block;
+                    }
+                    & span:first-child{
+                        color: $brandRed;
+                    }
+                }
+                p{
+                    margin: 15px 0;
+                    font-size: 1.1rem;
+                }
+                
+            }
         }
         .img-container{
             height: 100%;
