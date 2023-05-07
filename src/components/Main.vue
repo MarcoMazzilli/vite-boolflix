@@ -25,6 +25,7 @@ import { store }      from '../data/store';
     <div class="card-wrapper">  
       <ProductCard 
       v-for="(film,id) in store.movieResultApiCall" 
+      @click="store.counterJumbotronImg = id"
       :key="id"
       :imageLink="'http://image.tmdb.org/t/p/w342' + film.poster_path"
       :filmTitle="film.title"
@@ -38,6 +39,7 @@ import { store }      from '../data/store';
     <div class="card-wrapper">  
       <ProductCard 
       v-for="(tvSerie,id) in store.tvSeriesResultApiCall" 
+      @click="store.counterJumbotronImg = id"
       :key="id"
       :imageLink="'http://image.tmdb.org/t/p/w342' + tvSerie.poster_path"
       :filmTitle="tvSerie.name"
@@ -55,7 +57,7 @@ import { store }      from '../data/store';
 
 .container{
   background-color: rgb(0, 0, 0);
-  min-height: 100vh;
+
 
   .card-wrapper{
     display: flex;

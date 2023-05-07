@@ -7,6 +7,7 @@ export const store = reactive({
     seriesType:                      "all",
     language:                       "it-IT",
     titleToSearch:                  "",
+    counterJumbotronImg : 0,
 
     movieResultApiCall :            [],
     tvSeriesResultApiCall:          [],

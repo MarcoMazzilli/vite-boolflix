@@ -57,6 +57,8 @@ header{
   height: 75px;
   width: 100%;
   display: flex;
+  position: fixed;
+  z-index: 999;
 
     
   .col.left-side{

@@ -1,5 +1,6 @@
 <script>
 import Header            from './components/Header.vue'
+import Jumbotron         from './components/Jumbotron.vue'
 import Main              from './components/Main.vue'
 import Footer            from './components/Footer.vue'
 import SearchSection     from './components/MicroComponent/SearchSection.vue'
@@ -11,6 +12,7 @@ import axios             from 'axios'
   export default {
     components:{
       Header,
+      Jumbotron,
       SearchSection,
       Main,
       Footer,
@@ -33,6 +35,7 @@ import axios             from 'axios'
           store.movieResultApiCall = result.data.results;
           store.titleToSearch = "";
           store.tvSeriesResultApiCall = []
+          console.log(store.movieResultApiCall)
         })
       },
       getApi(){
@@ -76,6 +79,7 @@ import axios             from 'axios'
                  }
                })
             }
+
             
           })
       }
@@ -95,6 +99,8 @@ import axios             from 'axios'
   <Header 
   @startSearch2="getApi"
   @goToHomepage="homeGetApi"/>
+
+  <Jumbotron />
   
   <Main />
   
