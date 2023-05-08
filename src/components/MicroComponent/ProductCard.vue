@@ -67,11 +67,12 @@
 @use '../../scss/partials/vars.scss' as*;
 
 .mm-card{
-  width: 200px;
-  border-radius: 15px;
+  width: 80%;
+  border-radius: 10px;
   margin: 10px;
   overflow: hidden;
   position: relative;
+
   &:hover .film-description{
     opacity: 1;
     transition: all .4s;
@@ -93,7 +94,7 @@
   .film-cover{
     img{
       width: 100%;
-      object-fit: cover;
+      height: 100%;
       display: block;
     }
   }

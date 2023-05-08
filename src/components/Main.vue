@@ -1,6 +1,10 @@
 <script>
 import ProductCard    from './MicroComponent/ProductCard.vue';
 import { store }      from '../data/store';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/scss';
+import 'swiper/scss/navigation';
+import { Pagination, Navigation } from 'swiper';
 
   export default {
     data(){
@@ -10,6 +14,13 @@ import { store }      from '../data/store';
     },
     components:{
       ProductCard,
+      Swiper,
+      SwiperSlide,
+    },
+    setup() {
+      return {
+        modules: [Pagination, Navigation],
+      };
     },
     methods:{ //Utile per le stelle
       floorNumber(vote){
@@ -23,33 +34,29 @@ import { store }      from '../data/store';
     
     <h1 v-if="store.movieResultApiCall != 0">Film </h1>
     <div class="card-wrapper">  
-      <ProductCard 
-      v-for="(film,id) in store.movieResultApiCall" 
-      @click="store.counterJumbotronImg = id"
-      :key="id"
-      :imageLink="'http://image.tmdb.org/t/p/w342' + film.poster_path"
-      :filmTitle="film.title"
-      :originalFilmTitle="film.original_title"
-      :lang="film.original_language"
-      :rate="Math.ceil(film.vote_average/2)"
-      />
-    </div>
+      
+      <swiper :slidesPerView="6" :spaceBetween="0" :loop="true" :navigation="true" :modules="modules" class="mySwiper">
 
-    <h1 v-if="store.tvSeriesResultApiCall != 0">Tv-Series</h1>
-    <div class="card-wrapper">  
-      <ProductCard 
-      v-for="(tvSerie,id) in store.tvSeriesResultApiCall" 
-      @click="store.counterJumbotronImg = id"
-      :key="id"
-      :imageLink="'http://image.tmdb.org/t/p/w342' + tvSerie.poster_path"
-      :filmTitle="tvSerie.name"
-      :originalFilmTitle="tvSerie.original_name"
-      :lang="tvSerie.original_language"
-      :rate="Math.ceil(tvSerie.vote_average/2)"
-      />
-    </div>
+        <swiper-slide v-for="(movie,id) in store.movieResultApiCall" 
+        @click="store.counterJumbotronImg = id"
+        :key="id">
+
+          <ProductCard
+            :imageLink="'http://image.tmdb.org/t/p/w342' + movie.poster_path"
+            :filmTitle="movie.title"
+            :originalFilmTitle="movie.original_title"
+            :lang="movie.original_language"
+            :rate="Math.ceil(movie.vote_average/2)"
+          />
+
+        </swiper-slide>
     
+      </swiper>
+
+</div>
+
   </div>
+  
 </template>
 
 <style lang="scss" scoped>
@@ -57,6 +64,9 @@ import { store }      from '../data/store';
 
 .container{
   background-color: rgb(0, 0, 0);
+  min-height: 100vh;
+  width: 85%;
+  max-width: 2000px;
 
 
   .card-wrapper{
@@ -66,10 +76,13 @@ import { store }      from '../data/store';
 
   h1{
     color: white;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
+    margin: 10px 0;
   }
 }
+// .mySwiper{
+//    padding: 0 30px;
+
+
+// }
 
 </style>
