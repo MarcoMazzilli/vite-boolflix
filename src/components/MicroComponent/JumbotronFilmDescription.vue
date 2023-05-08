@@ -14,7 +14,7 @@ export default {
 
     <div class="description-box"
     v-show="store.counterJumbotronImg === product.id"
-    v-for="product in store.movieResultApiCall" 
+    v-for="product in store.movie" 
     :key="product.id">
 
     <h2>{{ product.title }}</h2>

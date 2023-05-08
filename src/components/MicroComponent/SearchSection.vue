@@ -26,7 +26,7 @@
     <select 
     @change="ifDataComplete()"
     :class="this.inputFlag ? 'clicked' : null"
-    v-model="store.seriesType"
+    v-model="store.typeFilter"
     name="" 
     id="">
       <option value="all">All</option>

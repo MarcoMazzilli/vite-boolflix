@@ -33,21 +33,21 @@ import axios             from 'axios'
         })
         .then(result => {
 
+          
           if (type === 'movie' && params === 'popular') {
-            store.movieResultApiCall = result.data.results;
+            store.movie = result.data.results;
             store.titleToSearch = "";
-            store.counterJumbotronImg = store.movieResultApiCall[0].id
           }
           if (type === 'tv') {
-            store.tvSeriesResultApiCall = result.data.results;
+            store.tv = result.data.results;
             store.titleToSearch = "";
           }
           if ( type === 'movie' && params === 'upcoming') {
             store.upcoming = result.data.results;
             store.titleToSearch = "";
           }
-
-          console.log(store.upcoming)
+          
+          store.counterJumbotronImg = store.movie[0].id
         })
       },
 
@@ -63,11 +63,11 @@ import axios             from 'axios'
 
           let fullUrl = store.baseUrl
 
-          if(store.seriesType === 'tvSeries'){
+          if(store.typeFilter === 'tvSeries'){
             fullUrl += '/search/tv'
-          } else if (store.seriesType === 'movies'){
+          } else if (store.typeFilter === 'movies'){
             fullUrl += '/search/movie'
-          }else if(store.seriesType === 'all'){
+          }else if(store.typeFilter === 'all'){
             fullUrl += '/search/multi'
           }
 
@@ -80,28 +80,31 @@ import axios             from 'axios'
           })
           .then(result => {
 
-            if(store.seriesType === 'movies'){
-              store.movieResultApiCall = result.data.results
-              store.tvSeriesResultApiCall = []
-
-            }else if(store.seriesType === 'tvSeries'){
-              store.tvSeriesResultApiCall = result.data.results
-              store.movieResultApiCall = []
-
+            
+            if(store.typeFilter === 'movies'){
+              store.movie = result.data.results
+              store.tv = []
+              
+            }else if(store.typeFilter === 'tvSeries'){
+              store.tv = result.data.results
+              store.movie = []
+              
             }else{
-              store.movieResultApiCall = []
-              store.tvSeriesResultApiCall = []
+              store.movie = []
+              store.tv = []
               store.upcoming = []
               result.data.results.forEach(element => {
-
+                
                 if (element.media_type === 'tv') {
-                  store.tvSeriesResultApiCall.push(element)
+                  store.tv.push(element)
                 }
                 if (element.media_type === 'movie') {
-                  store.movieResultApiCall.push(element)
-                 }
-               })
+                  store.movie.push(element)
+                }
+              })
             }
+
+            store.counterJumbotronImg = store.movie[0].id
 
             
           })
@@ -109,9 +112,7 @@ import axios             from 'axios'
       
     },
     mounted(){
-      this.homeGetApi('movie', 'popular')
-      this.homeGetApi('tv' , "top_rated")
-      this.homeGetApi('movie', 'upcoming')
+      this.backToHome()
     }
   }
   </script>

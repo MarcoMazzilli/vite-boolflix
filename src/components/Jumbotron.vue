@@ -27,7 +27,7 @@ export default {
             <div class="img-container">
                 <img
                 v-show="store.counterJumbotronImg === product.id"
-                v-for="product in store.movieResultApiCall" 
+                v-for="product in store.movie" 
                 :key="product.id"
                 :src="'http://image.tmdb.org/t/p/original' + product.backdrop_path" alt="not found">
             </div>

@@ -8,12 +8,13 @@ export const store = reactive({
     api_key :                       "8a9378730c1534547b3d8231e788ded6",
     language:                       "it-IT",
     titleToSearch:                  "",
-    seriesType:                      "all",
+    typeFilter:                      "all",
 
     // ApicCall Results
-    movieResultApiCall :            [],
-    tvSeriesResultApiCall:          [],
+    movie :                         [],
+    tv:                             [],
     upcoming:                       [],
-    
+    allResults: [],
+
     counterJumbotronImg : 0,
 })

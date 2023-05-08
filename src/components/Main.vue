@@ -32,12 +32,12 @@ import { Pagination, Navigation } from 'swiper';
 <template>
   <div class="container">
     
-    <h1 v-if="store.movieResultApiCall != 0">Film </h1>
+    <h1 v-if="store.movie != 0">Film </h1>
     <div class="card-wrapper">  
       
       <swiper :slidesPerView="6" :spaceBetween="0" :loop="true" :navigation="true" :modules="modules" class="mySwiper"  :pagination="{ clickable: true }">
 
-        <swiper-slide v-for="movie in store.movieResultApiCall" 
+        <swiper-slide v-for="movie in store.movie" 
         :key="movie.id"
         @click="store.counterJumbotronImg = movie.id"
         >
@@ -56,12 +56,12 @@ import { Pagination, Navigation } from 'swiper';
     </div>
     
     
-    <h1 v-if="store.tvSeriesResultApiCall != 0">Serie Tv </h1>
+    <h1 v-if="store.tv != 0">Serie Tv </h1>
     <div class="card-wrapper">  
       
       <swiper :slidesPerView="6" :spaceBetween="0" :loop="true" :navigation="true" :modules="modules" class="mySwiper">
 
-        <swiper-slide v-for="tvSeries in store.tvSeriesResultApiCall" 
+        <swiper-slide v-for="tvSeries in store.tv" 
         :key="tvSeries.id"
         @click="store.counterJumbotronImg = tvseries.id"
         >
