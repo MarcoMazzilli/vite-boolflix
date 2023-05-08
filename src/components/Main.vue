@@ -79,10 +79,9 @@ import { Pagination, Navigation } from 'swiper';
     margin: 10px 0;
   }
 }
-// .mySwiper{
-//    padding: 0 30px;
+.mySwiper{
+  width: 100%;
 
-
-// }
+}
 
 </style>

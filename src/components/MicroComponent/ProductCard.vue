@@ -67,9 +67,9 @@
 @use '../../scss/partials/vars.scss' as*;
 
 .mm-card{
-  width: 80%;
-  border-radius: 10px;
-  margin: 10px;
+  width: 260px;
+  height: 100%;
+  border-radius: 15px;
   overflow: hidden;
   position: relative;
 
@@ -92,9 +92,11 @@
     color: gray;
   }
   .film-cover{
+    height: 100%;
     img{
       width: 100%;
       height: 100%;
+      object-fit: cover;
       display: block;
     }
   }
