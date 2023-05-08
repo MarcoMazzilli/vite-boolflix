@@ -72,10 +72,6 @@
   margin: 10px;
   overflow: hidden;
   position: relative;
-  border: 2px solid rgba(0, 0, 0, 0);
-  &:hover{
-    border: 2px solid white;
-  }
   &:hover .film-description{
     opacity: 1;
     transition: all .4s;
@@ -84,6 +80,9 @@
   &:hover .film-cover{
     transform: scale(1.3);
     transition: 3s;
+  }
+  &:hover .film-cover img{
+    opacity: .3;
   }
   h4{
     font-weight: 800;
@@ -100,7 +99,7 @@
   }
    .film-description{
     padding: 2px; //Change
-    background-color: rgba(0, 0, 0, 0.9);
+    // background-color: rgba(0, 0, 0, 0.9);
     color: white;
     position: absolute;
     opacity: 0;
