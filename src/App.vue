@@ -51,6 +51,14 @@ import axios             from 'axios'
         })
       },
 
+      backToHome(){
+
+      this.homeGetApi('movie', 'popular')
+      this.homeGetApi('tv' , "top_rated")
+      this.homeGetApi('movie', 'upcoming')
+
+      },
+
       getApi(){
 
           let fullUrl = store.baseUrl
@@ -115,7 +123,7 @@ import axios             from 'axios'
 
   <Header 
   @startSearch2="getApi"
-  @goToHomepage="homeGetApi"/>
+  @goToHomepage="backToHome"/>
 
   <Jumbotron />
   
