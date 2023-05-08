@@ -12,4 +12,5 @@ export const store = reactive({
     counterJumbotronImg : 0,
     movieResultApiCall :            [],
     tvSeriesResultApiCall:          [],
+    upcoming: [],
 })

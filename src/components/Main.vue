@@ -35,11 +35,12 @@ import { Pagination, Navigation } from 'swiper';
     <h1 v-if="store.movieResultApiCall != 0">Film </h1>
     <div class="card-wrapper">  
       
-      <swiper :slidesPerView="6" :spaceBetween="0" :loop="true" :navigation="true" :modules="modules" class="mySwiper">
+      <swiper :slidesPerView="6" :spaceBetween="0" :loop="true" :navigation="true" :modules="modules" class="mySwiper"  :pagination="{ clickable: true }">
 
-        <swiper-slide v-for="(movie,id) in store.movieResultApiCall" 
-        @click="store.counterJumbotronImg = id"
-        :key="id">
+        <swiper-slide v-for="movie in store.movieResultApiCall" 
+        :key="movie.id"
+        @click="store.counterJumbotronImg = movie.id"
+        >
 
           <ProductCard
             :imageLink="'http://image.tmdb.org/t/p/w342' + movie.poster_path"
@@ -52,8 +53,54 @@ import { Pagination, Navigation } from 'swiper';
         </swiper-slide>
     
       </swiper>
+    </div>
+    
+    
+    <h1 v-if="store.tvSeriesResultApiCall != 0">Serie Tv </h1>
+    <div class="card-wrapper">  
+      
+      <swiper :slidesPerView="6" :spaceBetween="0" :loop="true" :navigation="true" :modules="modules" class="mySwiper">
 
-</div>
+        <swiper-slide v-for="tvSeries in store.tvSeriesResultApiCall" 
+        :key="tvSeries.id"
+        @click="store.counterJumbotronImg = tvseries.id"
+        >
+
+          <ProductCard
+            :imageLink="'http://image.tmdb.org/t/p/w342' + tvSeries.poster_path"
+            :filmTitle="tvSeries.name"
+            :originalFilmTitle="tvSeries.original_name"
+            :lang="tvSeries.original_language"
+            :rate="Math.ceil(tvSeries.vote_average/2)"
+          />
+
+        </swiper-slide>
+    
+      </swiper>
+    </div>
+
+    <h1 v-if="store.upcoming != 0">In arrivo solo su Boolflix </h1>
+    <div class="card-wrapper">  
+      
+      <swiper :slidesPerView="6" :spaceBetween="0" :loop="true" :navigation="true" :modules="modules" class="mySwiper">
+
+        <swiper-slide v-for="product in store.upcoming" 
+        :key="product.id"
+        @click="store.counterJumbotronImg = product.id"
+        >
+
+          <ProductCard
+            :imageLink="'http://image.tmdb.org/t/p/w342' + product.poster_path"
+            :filmTitle="product.title"
+            :originalFilmTitle="product.original_title"
+            :lang="product.original_language"
+            :rate="Math.ceil(product.vote_average/2)"
+          />
+
+        </swiper-slide>
+    
+      </swiper>
+    </div>
 
   </div>
   
@@ -65,6 +112,7 @@ import { Pagination, Navigation } from 'swiper';
 .container{
   background-color: rgb(0, 0, 0);
   min-height: 100vh;
+  padding-bottom: 50px;
   width: 85%;
   max-width: 2000px;
 
@@ -72,6 +120,7 @@ import { Pagination, Navigation } from 'swiper';
   .card-wrapper{
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 30px;
   }
 
   h1{
@@ -81,7 +130,6 @@ import { Pagination, Navigation } from 'swiper';
 }
 .mySwiper{
   width: 100%;
-
 }
 
 </style>

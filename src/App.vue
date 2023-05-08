@@ -24,20 +24,33 @@ import axios             from 'axios'
       }
     },
     methods:{
-      homeGetApi(){
-        axios.get(store.mostPopularApiUrl,{
+      homeGetApi(type,params){
+        axios.get(store.baseUrl + '/' + `/${type}` + `/${params}`,{
           params:{
             api_key : store.api_key,
             language : store.language,
           }
         })
         .then(result => {
-          store.movieResultApiCall = result.data.results;
-          store.titleToSearch = "";
-          store.tvSeriesResultApiCall = []
-          console.log(store.movieResultApiCall)
+
+          if (type === 'movie' && params === 'popular') {
+            store.movieResultApiCall = result.data.results;
+            store.titleToSearch = "";
+            store.counterJumbotronImg = store.movieResultApiCall[0].id
+          }
+          if (type === 'tv') {
+            store.tvSeriesResultApiCall = result.data.results;
+            store.titleToSearch = "";
+          }
+          if ( type === 'movie' && params === 'upcoming') {
+            store.upcoming = result.data.results;
+            store.titleToSearch = "";
+          }
+
+          console.log(store.upcoming)
         })
       },
+
       getApi(){
 
           let fullUrl = store.baseUrl
@@ -69,6 +82,8 @@ import axios             from 'axios'
 
             }else{
               store.movieResultApiCall = []
+              store.tvSeriesResultApiCall = []
+              store.upcoming = []
               result.data.results.forEach(element => {
 
                 if (element.media_type === 'tv') {
@@ -86,7 +101,9 @@ import axios             from 'axios'
       
     },
     mounted(){
-      this.homeGetApi()
+      this.homeGetApi('movie', 'popular')
+      this.homeGetApi('tv' , "top_rated")
+      this.homeGetApi('movie', 'upcoming')
     }
   }
   </script>

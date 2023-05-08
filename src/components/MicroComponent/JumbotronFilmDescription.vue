@@ -13,25 +13,25 @@ export default {
 <template>
 
     <div class="description-box"
-    v-show="store.counterJumbotronImg === id"
-    v-for="(film , id) in store.movieResultApiCall" 
-    :key="id">
+    v-show="store.counterJumbotronImg === product.id"
+    v-for="product in store.movieResultApiCall" 
+    :key="product.id">
 
-    <h2>{{ film.title }}</h2>
+    <h2>{{ product.title }}</h2>
 
     <div class="rating-stars">
         <span>
             <i class="fa-solid fa-star"
-            v-for="star in Math.ceil(film.vote_average/2)"
+            v-for="star in Math.ceil(product.vote_average/2)"
             :key="star" ></i>
         </span>
         <span>
             <i class="fa-regular fa-star"
-            v-for="star in Math.ceil(4 - film.vote_average/2)"
+            v-for="star in Math.ceil(4 - product.vote_average/2)"
             :key="star" ></i>
         </span>
     </div>
-    <p>{{ film.overview }}</p>
+    <p>{{ product.overview }}</p>
     </div>
 
 </template>

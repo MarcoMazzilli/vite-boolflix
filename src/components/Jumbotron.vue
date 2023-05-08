@@ -26,10 +26,10 @@ export default {
             </div>
             <div class="img-container">
                 <img
-                v-show="store.counterJumbotronImg === id"
-                v-for="(film , id) in store.movieResultApiCall" 
-                :key="id"
-                :src="'http://image.tmdb.org/t/p/original' + film.backdrop_path" alt="not found">
+                v-show="store.counterJumbotronImg === product.id"
+                v-for="product in store.movieResultApiCall" 
+                :key="product.id"
+                :src="'http://image.tmdb.org/t/p/original' + product.backdrop_path" alt="not found">
             </div>
 
         </div>
