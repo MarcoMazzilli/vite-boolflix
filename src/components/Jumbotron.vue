@@ -25,11 +25,16 @@ export default {
 
             </div>
             <div class="img-container">
+
+                <img src="../assets/img/netflix-hero-1.jpg" alt="Banner Netflix" 
+                v-if="store.counterJumbotronImg === 0">
+
                 <img
-                v-show="store.counterJumbotronImg === product.id"
-                v-for="product in store.movie" 
+                v-show="store.counterJumbotronImg === product"
+                v-for="product in store.allResults" 
                 :key="product.id"
                 :src="'http://image.tmdb.org/t/p/original' + product.backdrop_path" alt="not found">
+
             </div>
 
         </div>

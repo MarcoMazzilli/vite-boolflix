@@ -33,14 +33,14 @@ import axios             from 'axios'
         })
         .then(result => {
 
-          // store.titleToSearch = "";
+          store.titleToSearch = "";
 
-          // result.data.results.forEach(element => {
+          result.data.results.forEach(element => {
 
-          //     store.allResults.push(element);
+              store.allResults.push(element);
               
-          // })
-          // console.log(store.allResults)
+          })
+          console.log(store.allResults)
           
           if (type === 'movie' && params === 'popular') {
             store.movie = result.data.results;
@@ -51,18 +51,18 @@ import axios             from 'axios'
           if ( type === 'movie' && params === 'upcoming') {
             store.upcoming = result.data.results;
           }
-          
-          // store.counterJumbotronImg = store.allResults[0].id
-          console.log(store.movie)
+        
         })
       },
 
       backToHome(){
+      store.allResults = [];
 
       this.homeGetApi('movie', 'popular')
       this.homeGetApi('tv' , "top_rated")
       this.homeGetApi('movie', 'upcoming')
 
+      store.counterJumbotronImg = 0
       },
 
       getApi(){
@@ -100,6 +100,8 @@ import axios             from 'axios'
               store.tv = []
               store.upcoming = []
               result.data.results.forEach(element => {
+                store.allResults = [];
+                store.allResults.push(element);
                 
                 if (element.media_type === 'tv') {
                   store.tv.push(element)
@@ -110,7 +112,7 @@ import axios             from 'axios'
               })
             }
 
-            store.counterJumbotronImg = store.movie[0].id
+            store.counterJumbotronImg = store.allResults[0].id
 
             
           })
@@ -119,6 +121,7 @@ import axios             from 'axios'
     },
     mounted(){
       this.backToHome()
+
     }
   }
   </script>

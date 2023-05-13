@@ -39,7 +39,7 @@ import { Pagination, Navigation } from 'swiper';
     </select>
     
     <div v-for="(type, index) in ['movie', 'tv', 'upcoming']" :key="index">
- 
+
 
     <h1 v-if="store[type].length != 0">{{ store.lang[store.language][type] }}</h1>
     <div class="card-wrapper">  
@@ -48,7 +48,7 @@ import { Pagination, Navigation } from 'swiper';
 
         <swiper-slide v-for="movie in store[type]" 
         :key="movie.id"
-        @click="store.counterJumbotronImg = movie.id"
+        @click="store.counterJumbotronImg = movie"
         >
 
           <ProductCard

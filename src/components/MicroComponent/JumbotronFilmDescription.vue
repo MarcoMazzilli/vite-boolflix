@@ -12,12 +12,23 @@ export default {
 
 <template>
 
+<!-- DEFAULT DESCRIPTION -->
+<div class="description-box"
+    v-if="store.counterJumbotronImg === 0">
+
+    <h2>Benvenuto su <span id="logoRed">Boolflix</span></h2>
+
+    <p>Siediti comodo e scegli il meglio dell'intrattenimento presente sul nostro sito!</p>
+    <p>Scegli tra centinaia di film, serie Tv o documentari e prepara i Pop-Corn...ti aspetta una serata speciale!</p>
+</div>
+<!-- /DEFAULT DESCRIPTION -->
+
     <div class="description-box"
-    v-show="store.counterJumbotronImg === product.id"
-    v-for="product in store.movie" 
+    v-show="store.counterJumbotronImg === product"
+    v-for="product in store.allResults" 
     :key="product.id">
 
-    <h2>{{ product.title }}</h2>
+    <h2>{{ product.title || product.name }}</h2>
 
     <div class="rating-stars">
         <span>
@@ -31,7 +42,11 @@ export default {
             :key="star" ></i>
         </span>
     </div>
-    <p>{{ product.overview }}</p>
+
+    <div class="product-overview">
+        <p>{{ product.overview }}</p>
+    </div>
+
     </div>
 
 </template>
@@ -42,7 +57,7 @@ export default {
             
 .description-box{
     width: 70%;
-    height: 50%;
+    height: 60%;
     margin-left: 100px;
     padding: 20px;
     color: white;
@@ -52,6 +67,7 @@ export default {
         font-size: 2.5rem;
     }
     .rating-stars{
+        padding: 10px 0 ;
         span{
             display: inline-block;
         }
@@ -64,7 +80,16 @@ export default {
         margin: 15px 0;
         font-size: 1.1rem;
     }
-
+    #logoRed{
+        font-size: 3.7rem;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: $brandRed;
+    }
+    .product-overview{
+        max-height: 90%;
+        overflow-y: auto;
+    }
 }
 
 
