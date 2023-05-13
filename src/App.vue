@@ -33,21 +33,27 @@ import axios             from 'axios'
         })
         .then(result => {
 
+          // store.titleToSearch = "";
+
+          // result.data.results.forEach(element => {
+
+          //     store.allResults.push(element);
+              
+          // })
+          // console.log(store.allResults)
           
           if (type === 'movie' && params === 'popular') {
             store.movie = result.data.results;
-            store.titleToSearch = "";
           }
           if (type === 'tv') {
             store.tv = result.data.results;
-            store.titleToSearch = "";
           }
           if ( type === 'movie' && params === 'upcoming') {
             store.upcoming = result.data.results;
-            store.titleToSearch = "";
           }
           
-          store.counterJumbotronImg = store.movie[0].id
+          // store.counterJumbotronImg = store.allResults[0].id
+          console.log(store.movie)
         })
       },
 

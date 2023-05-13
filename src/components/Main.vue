@@ -32,20 +32,29 @@ import { Pagination, Navigation } from 'swiper';
 <template>
   <div class="container">
     
-    <h1 v-if="store.movie != 0">Film </h1>
+    
+    <select v-model="store.language">
+      <option value="it"> IT </option>
+      <option value="en"> EN </option>
+    </select>
+    
+    <div v-for="(type, index) in ['movie', 'tv', 'upcoming']" :key="index">
+ 
+
+    <h1 v-if="store[type].length != 0">{{ store.lang[store.language][type] }}</h1>
     <div class="card-wrapper">  
       
       <swiper :slidesPerView="6" :spaceBetween="0" :loop="true" :navigation="true" :modules="modules" class="mySwiper"  :pagination="{ clickable: true }">
 
-        <swiper-slide v-for="movie in store.movie" 
+        <swiper-slide v-for="movie in store[type]" 
         :key="movie.id"
         @click="store.counterJumbotronImg = movie.id"
         >
 
           <ProductCard
             :imageLink="'http://image.tmdb.org/t/p/w342' + movie.poster_path"
-            :filmTitle="movie.title"
-            :originalFilmTitle="movie.original_title"
+            :filmTitle="movie.title || movie.name"
+            :originalFilmTitle="movie.original_title || movie.original_name"
             :lang="movie.original_language"
             :rate="Math.ceil(movie.vote_average/2)"
           />
@@ -54,8 +63,10 @@ import { Pagination, Navigation } from 'swiper';
     
       </swiper>
     </div>
+  </div>
+
     
-    
+<!--     
     <h1 v-if="store.tv != 0">Serie Tv </h1>
     <div class="card-wrapper">  
       
@@ -63,7 +74,7 @@ import { Pagination, Navigation } from 'swiper';
 
         <swiper-slide v-for="tvSeries in store.tv" 
         :key="tvSeries.id"
-        @click="store.counterJumbotronImg = tvseries.id"
+        @click="store.counterJumbotronImg = tvSeries.id"
         >
 
           <ProductCard
@@ -77,9 +88,9 @@ import { Pagination, Navigation } from 'swiper';
         </swiper-slide>
     
       </swiper>
-    </div>
+    </div> -->
 
-    <h1 v-if="store.upcoming != 0">In arrivo solo su Boolflix </h1>
+    <!-- <h1 v-if="store.upcoming != 0">In arrivo solo su Boolflix </h1>
     <div class="card-wrapper">  
       
       <swiper :slidesPerView="6" :spaceBetween="0" :loop="true" :navigation="true" :modules="modules" class="mySwiper">
@@ -100,7 +111,7 @@ import { Pagination, Navigation } from 'swiper';
         </swiper-slide>
     
       </swiper>
-    </div>
+    </div> -->
 
   </div>
   
