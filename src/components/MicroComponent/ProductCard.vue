@@ -67,7 +67,7 @@
 @use '../../scss/partials/vars.scss' as*;
 
 .mm-card{
-  width: 250px;
+  width: 100%;
   aspect-ratio: 2/3;
   border-radius: 15px;
   overflow: hidden;

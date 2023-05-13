@@ -99,8 +99,9 @@ import axios             from 'axios'
               store.movie = []
               store.tv = []
               store.upcoming = []
+              store.allResults = [];
+
               result.data.results.forEach(element => {
-                store.allResults = [];
                 store.allResults.push(element);
                 
                 if (element.media_type === 'tv') {
@@ -110,11 +111,8 @@ import axios             from 'axios'
                   store.movie.push(element)
                 }
               })
+              store.counterJumbotronImg = 0;
             }
-
-            store.counterJumbotronImg = store.allResults[0].id
-
-            
           })
       }
       

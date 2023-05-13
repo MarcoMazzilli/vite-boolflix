@@ -44,7 +44,7 @@ import { Pagination, Navigation } from 'swiper';
     <h1 v-if="store[type].length != 0">{{ store.lang[store.language][type] }}</h1>
     <div class="card-wrapper">  
       
-      <swiper :slidesPerView="6" :spaceBetween="0" :loop="true" :navigation="true" :modules="modules" class="mySwiper"  :pagination="{ clickable: true }">
+      <swiper :slidesPerView="6" :spaceBetween="20" :loop="true" :navigation="true" :modules="modules" class="mySwiper"  :pagination="{ clickable: true }">
 
         <swiper-slide v-for="movie in store[type]" 
         :key="movie.id"
