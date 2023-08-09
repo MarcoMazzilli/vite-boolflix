@@ -1,4 +1,4 @@
-# Boolflix 
+# Boolflix 🎥📺
 Prototipazione di una piattaforma per l'intrattenimento, inspirata all'interfaccia grafica di Netflix, manipolando i dati estrapolati da un `API`.
 
 Predisposizione di `filtri` per la ricerca in base a categoria e nome.
