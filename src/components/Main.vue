@@ -33,11 +33,11 @@ import { Pagination, Navigation } from 'swiper';
   <div class="container">
     
     
-    <select v-model="store.language">
+    <!-- <select v-model="store.language">
       <option value="it"> IT </option>
       <option value="en"> EN </option>
     </select>
-    
+     -->
     <div v-for="(type, index) in ['movie', 'tv', 'upcoming']" :key="index">
 
 
